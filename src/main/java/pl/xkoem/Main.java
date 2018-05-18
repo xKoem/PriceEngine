@@ -1,15 +1,25 @@
 package pl.xkoem;
 
-import pl.xkoem.page.Page;
+import pl.xkoem.data.Links;
+import pl.xkoem.page.PageCreator;
+import pl.xkoem.page.pages.Page;
 
 public class Main {
     public static void main(String[] args) {
+
         long time = System.currentTimeMillis();
-        for (int i = 0; i < 100; i++) {
-            Page page = new Page("https://www.morele.net/monitor-aoc-ag241qx-1060690/");
-            System.out.println(page.getElementById("product_price_brutto").attr("content"));
+
+        Page p = PageCreator.getPage("https://www.x-kom.pl/p/427826-sluchawki-przewodowe-logitech-pro-gaming-headset.html");
+        System.out.println(p.getProductName() + " "+ p.getProductPrice());
+
+        for (String link: Links.getLinks()) {
+            Page page = PageCreator.getPage(link);
+            System.out.println(page.getProductName() + " " + page.getProductPrice());
         }
-        System.out.println("Minelo s: " + (System.currentTimeMillis() - time)/1000);
+
+
+        System.out.println("Execution time: " + (System.currentTimeMillis() - time)/1000);
+
     }
 }
 
