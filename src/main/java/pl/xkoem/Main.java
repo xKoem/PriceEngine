@@ -1,17 +1,11 @@
 package pl.xkoem;
 
-
-import pl.xkoem.util.Logger;
+import pl.xkoem.database.InvalidDatabaseConnection;
 
 public class Main {
-    public static void main(String[] args) {
-
-
-        PriceChecker priceChecker = new PriceChecker();
-        priceChecker.checkPrices();
-
-
-        Logger.logCheckingInfo(priceChecker.getCheckingTime(), priceChecker.getChecked());
+    public static void main(String[] args) throws InvalidDatabaseConnection {
+        PriceEngine priceEngine = new PriceEngine();
+        priceEngine.run();
     }
 }
 

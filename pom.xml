@@ -11,7 +11,7 @@
 
     <properties>
         <testng.version>6.14.3</testng.version>
-        <java.version>1.8</java.version>
+        <java.version>1.9</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
         <jsoup.version>1.11.3</jsoup.version>
@@ -66,6 +66,11 @@
             <artifactId>testng</artifactId>
             <version>${testng.version}</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.45</version>
         </dependency>
 
     </dependencies>
