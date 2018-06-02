@@ -28,39 +28,11 @@ public class DatabaseConnection {
         return true;
     }
 
-    private boolean isConnectionEstablished() {
+    boolean isConnectionEstablished() {
         return connection != null;
     }
 
-    public void query() {
-        if (!isConnectionEstablished()) {
-            return;
-        }
-        Statement statement = createStatement();
-        ResultSet resultSet = execQuery("select * from products", statement);
-        printResults(resultSet);
-    }
-
-    private void printResults(ResultSet resultSet) {
-        try {
-            while (resultSet.next()) {
-                System.out.println(resultSet.getInt("id") + resultSet.getString("name"));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private ResultSet execQuery(String query, Statement statement) {
-        try {
-             return statement.executeQuery(query);
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
-    private Statement createStatement() {
+    Statement createStatement() {
         try {
             return connection.createStatement();
         } catch (SQLException e) {

@@ -4,29 +4,31 @@ import pl.xkoem.data.Links;
 import pl.xkoem.page.PageCreator;
 import pl.xkoem.page.pages.Page;
 
-class PriceChecker {
+import java.util.List;
+
+class URLChecker {
     private long checkingTime;
     private int checked;
 
-    PriceChecker() {
+    URLChecker() {
         checkingTime = 0;
         checked = 0;
     }
 
-    void checkPrices() {
-        long time = System.currentTimeMillis();
+    void checkPrices(List<String> linksToCheck) {
+        System.out.println("Checking " + linksToCheck.size() + " products");
 
-        Page p = PageCreator.getPage("https://www.x-kom.pl/p/427826-sluchawki-przewodowe-logitech-pro-gaming-headset.html");
-        checked++;
-        System.out.println(p.getProductName() + " "+ p.getProductPrice());
-
-        for (String link: Links.getLinks()) {
+        for (String link: linksToCheck) {
             Page page = PageCreator.getPage(link);
             System.out.println(page.getProductName() + " " + page.getProductPrice());
             checked++;
         }
 
-        checkingTime =  (System.currentTimeMillis() - time)/1000;
+    }
+
+    String checkName(String link) {
+        Page p = PageCreator.getPage(link);
+        return p.getProductName();
     }
 
     long getCheckingTime() {
