@@ -38,7 +38,7 @@ public class Query {
     }
 
     public ResultSet queryProductsForChecking() {
-        return query("select * from products where is_checking=1");
+        return query("select * from products where is_checking=true");
     }
 
     private ResultSet query(String query) {

@@ -1,6 +1,5 @@
 package pl.xkoem;
 
-import pl.xkoem.data.Links;
 import pl.xkoem.page.PageCreator;
 import pl.xkoem.page.pages.Page;
 
