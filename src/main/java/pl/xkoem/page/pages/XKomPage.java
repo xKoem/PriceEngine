@@ -2,8 +2,8 @@ package pl.xkoem.page.pages;
 
 public class XKomPage extends Page {
 
-    public XKomPage(String pageUrl) {
-        pageLoaded = loadPage(pageUrl);
+    public XKomPage(String pageUrl) throws CannotLoadPageException {
+        loadPage(pageUrl);
     }
 
     @Override

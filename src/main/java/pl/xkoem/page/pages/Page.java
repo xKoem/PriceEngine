@@ -8,15 +8,13 @@ import java.util.Optional;
 public abstract class Page {
 
     Document page;
-    boolean pageLoaded;
 
-    boolean loadPage(String pageUrl) {
+    void loadPage(String pageUrl) throws CannotLoadPageException {
         Optional<Document> loadedPage = PageLoader.loadPage(pageUrl);
         if (loadedPage.isPresent()) {
             this.page = loadedPage.get();
-            return true;
         } else {
-            return false;
+            throw new CannotLoadPageException(pageUrl);
         }
     }
 

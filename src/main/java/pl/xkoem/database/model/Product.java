@@ -8,6 +8,7 @@ public class Product {
     public Product(int productID, String link) {
         this.productID = productID;
         this.link = link;
+        this.price = "";
     }
 
     public void setPrice(String price) {

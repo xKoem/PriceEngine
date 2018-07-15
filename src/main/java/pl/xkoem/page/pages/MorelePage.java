@@ -2,8 +2,8 @@ package pl.xkoem.page.pages;
 
 public class MorelePage extends Page {
 
-    public MorelePage(String pageUrl) {
-        pageLoaded = loadPage(pageUrl);
+    public MorelePage(String pageUrl) throws CannotLoadPageException {
+       loadPage(pageUrl);
     }
 
     @Override

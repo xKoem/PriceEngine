@@ -2,6 +2,7 @@ package pl.xkoem;
 
 import pl.xkoem.database.model.Product;
 import pl.xkoem.database.model.Products;
+import pl.xkoem.page.EmptyPage;
 import pl.xkoem.page.PageCreator;
 import pl.xkoem.page.pages.Page;
 
@@ -15,6 +16,9 @@ class URLChecker {
         //todo: insert into db
         for (Product product: productsToCheck.getProducts()) {
             Page page = PageCreator.getPage(product.getLink());
+            if (page instanceof EmptyPage) {
+                continue;
+            }
 
             product.setPrice(page.getProductPrice());
             checked++;
