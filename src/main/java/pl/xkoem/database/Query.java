@@ -21,6 +21,22 @@ public class Query {
         }
     }
 
+    public void createTables() {
+        Statement statement = databaseConnection.createStatement();
+        exec("create table if not exists products (" +
+                "product_id serial primary key," +
+                "name varchar(250)," +
+                "link varchar(250)," +
+                "is_checking bool" +
+                ")", statement);
+        exec("create table if not exists prices(" +
+                "price_id serial primary key," +
+                "product_id integer references products," +
+                "price varchar(15)," +
+                "checking_time bigint" +
+                ");", statement);
+    }
+
     public void insertPrice(int productID, String price, long checkingTime) {
         Statement statement = databaseConnection.createStatement();
         exec("insert into prices (product_id, price, checking_time) values ('" + productID + "', '" + price + "', '" + checkingTime + "');", statement);

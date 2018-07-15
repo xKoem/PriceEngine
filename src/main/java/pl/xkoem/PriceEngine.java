@@ -17,6 +17,7 @@ class PriceEngine {
     PriceEngine(Config config) {
         try {
             this.query = new Query(new DatabaseConnection(config));
+            query.createTables();
         } catch (InvalidDatabaseConnection invalidDatabaseConnection) {
             System.out.println("Cannot connect into database");
         }

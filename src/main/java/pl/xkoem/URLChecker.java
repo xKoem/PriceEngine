@@ -13,7 +13,6 @@ class URLChecker {
     Products checkPrices(Products productsToCheck) {
 
         System.out.println("Checking " + productsToCheck.size() + " products"); //todo: logger
-        //todo: insert into db
         for (Product product: productsToCheck.getProducts()) {
             Page page = PageCreator.getPage(product.getLink());
             if (page instanceof EmptyPage) {
