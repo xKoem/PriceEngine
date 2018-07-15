@@ -7,9 +7,8 @@ public class MorelePage extends Page {
     }
 
     @Override
-    public Double getProductPrice() {
-        String price = page.getElementById("product_price_brutto").attr("content");
-        return Double.parseDouble(price);
+    public String getProductPrice() {
+        return page.getElementById("product_price_brutto").attr("content");
     }
 
     @Override

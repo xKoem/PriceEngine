@@ -7,9 +7,8 @@ public class XKomPage extends Page {
     }
 
     @Override
-    public Double getProductPrice() {
-        String price =  page.getElementsByClass("price").get(0).getElementsByTag("meta").get(0).attr("content");
-        return Double.parseDouble(price);
+    public String getProductPrice() {
+        return page.getElementsByClass("price").get(0).getElementsByTag("meta").get(0).attr("content");
     }
 
     @Override

@@ -5,11 +5,14 @@ import pl.xkoem.database.DatabaseConnection;
 import pl.xkoem.database.InvalidDatabaseConnection;
 import pl.xkoem.database.Query;
 import pl.xkoem.database.QueryTranslator;
+import pl.xkoem.database.model.Product;
+import pl.xkoem.database.model.Products;
 
 import java.util.List;
 
 class PriceEngine {
     private Query query;
+    private long checkingTime;
 
     PriceEngine(Config config) {
         try {
@@ -21,9 +24,25 @@ class PriceEngine {
 
     void run() {
         URLChecker URLChecker = new URLChecker();
-        List<String> linksToCheck = QueryTranslator.translateResultSetToListOfLinks(query.queryProductsForChecking());
+        Products productsToCheck = QueryTranslator.translateResultSetToListOfLinks(query.queryProductsForChecking());
 
-        URLChecker.checkPrices(linksToCheck);
+        checkingTime = System.currentTimeMillis();
+        Products checkedProducts = URLChecker.checkPrices(productsToCheck);
+        insertPrices(checkedProducts);
+
+        System.out.println(checkedProducts.toString());
+    }
+
+    private void insertPrices(Products checkedProducts) {
+        checkedProducts.getProducts().stream()
+                .filter(product -> !product.getPrice().equals(""))
+                .forEach(this::insertPrice);
+    }
+
+    private void insertPrice(Product product) {
+        int productID = product.getProductID();
+        String productPrice = product.getPrice();
+        query.insertPrice(productID, productPrice, checkingTime);
     }
 
     void insertNewProducts(List<String> links) {

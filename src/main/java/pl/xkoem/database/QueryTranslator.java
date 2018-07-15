@@ -1,21 +1,26 @@
 package pl.xkoem.database;
 
+import pl.xkoem.database.model.Product;
+import pl.xkoem.database.model.Products;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class QueryTranslator {
 
-    public static List<String> translateResultSetToListOfLinks(ResultSet resultSet) {
-        List<String> listOfLinks = new ArrayList<>();
+    public static Products translateResultSetToListOfLinks(ResultSet resultSet) {
+        Products products = new Products();
         try {
             while (resultSet.next()) {
-                listOfLinks.add(resultSet.getString("link"));
+                int productID = resultSet.getInt("product_id");
+                String link = resultSet.getString("link");
+
+                Product product = new Product(productID, link);
+                products.addProduct(product);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return listOfLinks;
+        return products;
     }
 }

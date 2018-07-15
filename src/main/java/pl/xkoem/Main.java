@@ -1,11 +1,10 @@
 package pl.xkoem;
 
 import pl.xkoem.config.Config;
-import pl.xkoem.database.InvalidDatabaseConnection;
 import pl.xkoem.file.FileReader;
 
 public class Main {
-    public static void main(String[] args) throws InvalidDatabaseConnection {
+    public static void main(String[] args) {
         PriceEngine priceEngine = new PriceEngine(loadConfig());
         priceEngine.run();
     }

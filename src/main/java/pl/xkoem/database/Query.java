@@ -21,10 +21,15 @@ public class Query {
         }
     }
 
+    public void insertPrice(int productID, String price, long checkingTime) {
+        Statement statement = databaseConnection.createStatement();
+        exec("insert into prices (product_id, price, checking_time) values ('" + productID + "', '" + price + "', '" + checkingTime + "');", statement);
+    }
+
     public void insertNewProduct(String productName, String productURL) {
         if (!productExist(productURL)) {
             Statement statement = databaseConnection.createStatement();
-            exec("insert into products (name, link) values ('" + productName + "', '" + productURL + "')", statement);
+            exec("insert into products (name, link, is_checking) values ('" + productName + "', '" + productURL + "', 'true')", statement);
         }
     }
 

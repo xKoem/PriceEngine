@@ -20,7 +20,7 @@ public abstract class Page {
         }
     }
 
-    public abstract Double getProductPrice();
+    public abstract String getProductPrice();
 
     public abstract String getProductName();
 }

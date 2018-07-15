@@ -1,28 +1,31 @@
 package pl.xkoem;
 
+import pl.xkoem.database.model.Product;
+import pl.xkoem.database.model.Products;
 import pl.xkoem.page.PageCreator;
 import pl.xkoem.page.pages.Page;
 
-import java.util.List;
 
 class URLChecker {
-    private long checkingTime;
-    private int checked;
+    private int checked = 0;
 
-    URLChecker() {
-        checkingTime = 0;
-        checked = 0;
-    }
+    Products checkPrices(Products productsToCheck) {
 
-    void checkPrices(List<String> linksToCheck) {
-        System.out.println("Checking " + linksToCheck.size() + " products");
+        System.out.println("Checking " + productsToCheck.size() + " products"); //todo: logger
+        //todo: insert into db
+        for (Product product: productsToCheck.getProducts()) {
+            Page page = PageCreator.getPage(product.getLink());
 
-        for (String link: linksToCheck) {
-            Page page = PageCreator.getPage(link);
-            System.out.println(page.getProductName() + " " + page.getProductPrice());
+            product.setPrice(page.getProductPrice());
             checked++;
+            System.out.print("*");
+        }
+        System.out.println();
+        if (checked != productsToCheck.size()) {
+            System.out.println("Products to check: " + productsToCheck.size() + " Checked: " + checked); //todo: logger
         }
 
+        return productsToCheck;
     }
 
     String checkName(String link) {
@@ -30,11 +33,4 @@ class URLChecker {
         return p.getProductName();
     }
 
-    long getCheckingTime() {
-        return checkingTime;
-    }
-
-    int getChecked() {
-        return checked;
-    }
 }
