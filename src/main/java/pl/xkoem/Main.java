@@ -11,18 +11,17 @@ public class Main {
         PriceEngine priceEngine = new PriceEngine(loadConfig());
 
         while(true) {
-            TimeUnit.SECONDS.sleep(30);
+            TimeUnit.SECONDS.sleep(55);
             Calendar now = Calendar.getInstance();
             if (now.get(Calendar.MINUTE) == 0) {
                 priceEngine.run();
             }
         }
-
     }
 
     private static Config loadConfig() {
         Config config = new Config();
-        config.loadConfiguration(FileReader.readFile("/Users/koem/IdeaProjects/PriceEngine/config/config.cfg"));
+        config.loadConfiguration(FileReader.readFile("config/config.cfg"));
         return config;
     }
 

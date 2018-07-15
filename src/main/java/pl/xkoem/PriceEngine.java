@@ -20,6 +20,7 @@ class PriceEngine {
         try {
             this.query = new Query(new DatabaseConnection(config));
             query.createTables();
+            logger.logInfo(this.getClass(), "PriceEngine successfully loaded");
         } catch (InvalidDatabaseConnection invalidDatabaseConnection) {
             logger.logError(this.getClass(), "Cannot connect into database");
         }
