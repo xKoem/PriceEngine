@@ -7,19 +7,21 @@ import pl.xkoem.database.Query;
 import pl.xkoem.database.QueryTranslator;
 import pl.xkoem.database.model.Product;
 import pl.xkoem.database.model.Products;
+import pl.xkoem.util.LoggerService;
 
 import java.util.List;
 
 class PriceEngine {
     private Query query;
     private long checkingTime;
+    private static final LoggerService logger = new LoggerService();
 
     PriceEngine(Config config) {
         try {
             this.query = new Query(new DatabaseConnection(config));
             query.createTables();
         } catch (InvalidDatabaseConnection invalidDatabaseConnection) {
-            System.out.println("Cannot connect into database");
+            logger.logError(this.getClass(), "Cannot connect into database");
         }
     }
 
@@ -30,8 +32,6 @@ class PriceEngine {
         checkingTime = System.currentTimeMillis();
         Products checkedProducts = URLChecker.checkPrices(productsToCheck);
         insertPrices(checkedProducts);
-
-        System.out.println(checkedProducts.toString());
     }
 
     private void insertPrices(Products checkedProducts) {
@@ -51,7 +51,7 @@ class PriceEngine {
         for (String link: links) {
             String name = urlChecker.checkName(link);
             if (name.isEmpty()) {
-                System.out.println("Cannot find name for url: " + link);
+                logger.logError(this.getClass(), "Cannot find name for url: " + link);
                 continue;
             }
             query.insertNewProduct(name, link);

@@ -6,7 +6,7 @@
 
     <groupId>pl.xkoem</groupId>
     <artifactId>PriceEngine</artifactId>
-    <version>0.2</version>
+    <version>0.3</version>
 
 
     <properties>
@@ -91,6 +91,16 @@
             <groupId>org.jsoup</groupId>
             <artifactId>jsoup</artifactId>
             <version>${jsoup.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.25</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.7.25</version>
         </dependency>
         <dependency>
             <groupId>org.testng</groupId>

@@ -1,5 +1,7 @@
 package pl.xkoem.page.pages;
 
+import pl.xkoem.page.CannotLoadPageException;
+
 public class XKomPage extends Page {
 
     public XKomPage(String pageUrl) throws CannotLoadPageException {

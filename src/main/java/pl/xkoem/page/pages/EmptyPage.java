@@ -1,6 +1,4 @@
-package pl.xkoem.page;
-
-import pl.xkoem.page.pages.Page;
+package pl.xkoem.page.pages;
 
 public class EmptyPage extends Page {
 

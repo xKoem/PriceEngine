@@ -2,21 +2,18 @@ package pl.xkoem.page.loader;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import pl.xkoem.page.CannotLoadPageException;
 
 import java.io.IOException;
-import java.util.Optional;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class PageLoader {
 
-    public static Optional<Document> loadPage(String pageLink)  {
+    public static Document loadPage(String pageLink) throws CannotLoadPageException {
         try {
-            return Optional.of(Jsoup.connect(pageLink).get());
+            return Jsoup.connect(pageLink).get();
         } catch (IOException e) {
-            Logger.getLogger("ERROR").log(Level.WARNING, "Cannot load page: " + pageLink);
+            throw new CannotLoadPageException(pageLink);
         }
-        return Optional.empty();
     }
 
 }

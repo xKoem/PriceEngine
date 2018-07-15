@@ -3,10 +3,21 @@ package pl.xkoem;
 import pl.xkoem.config.Config;
 import pl.xkoem.file.FileReader;
 
+import java.util.Calendar;
+import java.util.concurrent.TimeUnit;
+
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         PriceEngine priceEngine = new PriceEngine(loadConfig());
-        priceEngine.run();
+
+        while(true) {
+            TimeUnit.SECONDS.sleep(30);
+            Calendar now = Calendar.getInstance();
+            if (now.get(Calendar.MINUTE) == 0) {
+                priceEngine.run();
+            }
+        }
+
     }
 
     private static Config loadConfig() {

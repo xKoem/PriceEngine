@@ -1,11 +1,14 @@
 package pl.xkoem.database;
 
+import pl.xkoem.util.LoggerService;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 public class Query {
     private final DatabaseConnection databaseConnection;
+    private static final LoggerService logger = new LoggerService();
 
     public Query(DatabaseConnection databaseConnection) {
         this.databaseConnection = databaseConnection;
@@ -14,7 +17,7 @@ public class Query {
     public void printResults(ResultSet resultSet) {
         try {
             while (resultSet.next()) {
-                System.out.println(resultSet.getInt("id") + resultSet.getString("name"));
+                logger.logInfo(this.getClass(), resultSet.getInt("id") + resultSet.getString("name"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
