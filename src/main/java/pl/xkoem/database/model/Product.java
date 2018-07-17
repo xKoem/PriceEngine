@@ -4,15 +4,24 @@ public class Product {
     private int productID;
     private String link;
     private String price;
+    private Boolean priceChanged;
 
-    public Product(int productID, String link) {
+    public Product(int productID, String link, String price) {
         this.productID = productID;
         this.link = link;
-        this.price = "";
+        this.price = price;
+        this.priceChanged = false;
     }
 
     public void setPrice(String price) {
-        this.price = price;
+        if (!(this.price.equals(price))) {
+            this.price = price;
+            this.priceChanged = true;
+        }
+    }
+
+    public boolean isPriceChanged() {
+        return priceChanged;
     }
 
     public int getProductID() {
@@ -33,6 +42,7 @@ public class Product {
                 "productID=" + productID +
                 ", link='" + link + '\'' +
                 ", price='" + price + '\'' +
+                ", priceChanged=" + priceChanged +
                 '}';
     }
 }

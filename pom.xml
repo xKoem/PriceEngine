@@ -6,7 +6,7 @@
 
     <groupId>pl.xkoem</groupId>
     <artifactId>PriceEngine</artifactId>
-    <version>0.3</version>
+    <version>0.4</version>
 
 
     <properties>

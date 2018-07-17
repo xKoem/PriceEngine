@@ -14,6 +14,8 @@ import java.util.List;
 class PriceEngine {
     private Query query;
     private long checkingTime;
+    private int insertedProducts;
+
     private static final LoggerService logger = new LoggerService();
 
     PriceEngine(Config config) {
@@ -36,15 +38,19 @@ class PriceEngine {
     }
 
     private void insertPrices(Products checkedProducts) {
+        insertedProducts = 0;
         checkedProducts.getProducts().stream()
                 .filter(product -> !product.getPrice().equals(""))
+                .filter(Product::isPriceChanged)
                 .forEach(this::insertPrice);
+        logger.logInfo(this.getClass(), "Updated prices for " + insertedProducts + " products");
     }
 
     private void insertPrice(Product product) {
         int productID = product.getProductID();
         String productPrice = product.getPrice();
         query.insertPrice(productID, productPrice, checkingTime);
+        insertedProducts++;
     }
 
     void insertNewProducts(List<String> links) {
