@@ -1,8 +1,8 @@
 package pl.xkoem.page;
 
-class UnsupportedPageException extends Exception {
+public class UnsupportedPageException extends Exception {
 
-    UnsupportedPageException(String page) {
+    public UnsupportedPageException(String page) {
         super(page);
     }
 }

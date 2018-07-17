@@ -7,6 +7,7 @@ import pl.xkoem.database.Query;
 import pl.xkoem.database.QueryTranslator;
 import pl.xkoem.database.model.Product;
 import pl.xkoem.database.model.Products;
+import pl.xkoem.page.NotValidPageException;
 import pl.xkoem.util.LoggerService;
 
 import java.util.List;
@@ -56,12 +57,15 @@ class PriceEngine {
     void insertNewProducts(List<String> links) {
         URLChecker urlChecker = new URLChecker();
         for (String link: links) {
-            String name = urlChecker.checkName(link);
-            if (name.isEmpty()) {
-                logger.logError(this.getClass(), "Cannot find name for url: " + link);
-                continue;
+            String name = null;
+            try {
+                name = urlChecker.checkName(link);
+                query.insertNewProduct(name, link);
+            } catch (NotValidPageException e) {
+                logger.logError(this.getClass(), "Not valid page: " + e.getMessage());
             }
-            query.insertNewProduct(name, link);
+
+
         }
     }
 }

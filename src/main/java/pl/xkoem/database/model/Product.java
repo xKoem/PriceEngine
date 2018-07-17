@@ -9,7 +9,7 @@ public class Product {
     public Product(int productID, String link, String price) {
         this.productID = productID;
         this.link = link;
-        this.price = price;
+        this.price = price == null? "": price;
         this.priceChanged = false;
     }
 
