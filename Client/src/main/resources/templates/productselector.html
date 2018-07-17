@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>PriceChecker</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+<h1>Select Product</h1>
+<form action="#" th:action="@{/productselector}" th:object="${product}" method="post">
+    <p>Name: <input type="text" th:field="*{id}" /></p>
+    <p><input type="submit" value="Submit" /></p>
+</form>
+</body>
+</html>

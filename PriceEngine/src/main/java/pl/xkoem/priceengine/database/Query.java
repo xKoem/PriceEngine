@@ -32,6 +32,7 @@ public class Query {
                 "link varchar(250)," +
                 "is_checking bool" +
                 ")", statement);
+
         exec("create table if not exists prices(" +
                 "price_id serial primary key," +
                 "product_id integer references products," +

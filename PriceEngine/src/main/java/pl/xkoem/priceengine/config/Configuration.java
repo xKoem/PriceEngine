@@ -22,7 +22,6 @@ class Configuration {
         configuration.put(ConfigType.valueOf(configStrings.first), configStrings.second);
     }
 
-
     public String get(ConfigType configType) {
         return configuration.get(configType);
     }
