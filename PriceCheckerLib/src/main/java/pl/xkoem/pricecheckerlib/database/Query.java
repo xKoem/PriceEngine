@@ -62,6 +62,16 @@ public class Query {
         }
     }
 
+    public ResultSet getProductName(String productID) {
+        return query("select name from products " +
+                "where product_id = " + productID + ";");
+    }
+
+    public ResultSet getAllProductPrices(String productID) {
+       return query("select price, checking_time from prices " +
+                "where product_id = " + productID + ";");
+    }
+
     public ResultSet queryProductsForChecking() {
         return query("select prod.product_id, prod.link, pric.price from products prod " +
                 "left join prices pric on pric.product_id = prod.product_id " +
@@ -99,4 +109,5 @@ public class Query {
             return null;
         }
     }
+
 }
