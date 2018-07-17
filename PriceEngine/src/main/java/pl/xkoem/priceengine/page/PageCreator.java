@@ -1,7 +1,7 @@
 package pl.xkoem.priceengine.page;
 
 import pl.xkoem.priceengine.page.pages.*;
-import pl.xkoem.priceengine.util.LoggerService;
+import pl.xkoem.pricecheckerlib.util.LoggerService;
 
 public class PageCreator {
     private static final LoggerService logger = new LoggerService();

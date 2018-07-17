@@ -1,7 +1,7 @@
-package pl.xkoem.priceengine.database;
+package pl.xkoem.pricecheckerlib.database;
 
-import pl.xkoem.priceengine.database.model.Product;
-import pl.xkoem.priceengine.database.model.Products;
+import pl.xkoem.pricecheckerlib.model.Product;
+import pl.xkoem.pricecheckerlib.model.Products;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

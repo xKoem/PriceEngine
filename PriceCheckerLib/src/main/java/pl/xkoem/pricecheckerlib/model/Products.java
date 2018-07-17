@@ -1,4 +1,4 @@
-package pl.xkoem.priceengine.database.model;
+package pl.xkoem.pricecheckerlib.model;
 
 import java.util.ArrayList;
 import java.util.List;

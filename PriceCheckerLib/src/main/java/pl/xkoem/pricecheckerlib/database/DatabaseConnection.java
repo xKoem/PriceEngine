@@ -1,13 +1,13 @@
-package pl.xkoem.priceengine.database;
+package pl.xkoem.pricecheckerlib.database;
 
-import pl.xkoem.priceengine.config.Config;
-import pl.xkoem.priceengine.util.LoggerService;
+import pl.xkoem.pricecheckerlib.config.Config;
+import pl.xkoem.pricecheckerlib.util.LoggerService;
 
 
 import java.sql.*;
 
 
-import static pl.xkoem.priceengine.config.ConfigType.*;
+import static pl.xkoem.pricecheckerlib.config.ConfigType.*;
 
 public class DatabaseConnection {
 

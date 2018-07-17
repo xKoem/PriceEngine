@@ -1,5 +1,5 @@
 .idea/
 */target/
 *.iml
-PriceEngine/config/config.cfg
+config/config.cfg
 *.log

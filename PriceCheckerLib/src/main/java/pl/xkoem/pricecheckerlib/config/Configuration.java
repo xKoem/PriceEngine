@@ -1,7 +1,7 @@
-package pl.xkoem.priceengine.config;
+package pl.xkoem.pricecheckerlib.config;
 
-import pl.xkoem.priceengine.util.LoggerService;
-import pl.xkoem.priceengine.util.Pair;
+import pl.xkoem.pricecheckerlib.util.LoggerService;
+import pl.xkoem.pricecheckerlib.util.Pair;
 
 import java.util.Arrays;
 import java.util.HashMap;

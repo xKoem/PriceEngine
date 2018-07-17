@@ -1,6 +1,6 @@
-package pl.xkoem.priceengine.database;
+package pl.xkoem.pricecheckerlib.database;
 
-import pl.xkoem.priceengine.util.LoggerService;
+import pl.xkoem.pricecheckerlib.util.LoggerService;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

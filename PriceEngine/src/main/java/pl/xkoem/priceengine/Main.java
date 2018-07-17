@@ -1,7 +1,7 @@
 package pl.xkoem.priceengine;
 
-import pl.xkoem.priceengine.config.Config;
-import pl.xkoem.priceengine.file.FileReader;
+import pl.xkoem.pricecheckerlib.config.Config;
+import pl.xkoem.pricecheckerlib.file.FileReader;
 
 import java.util.Calendar;
 import java.util.concurrent.TimeUnit;

@@ -1,4 +1,4 @@
-package pl.xkoem.priceengine.config;
+package pl.xkoem.pricecheckerlib.config;
 
 public enum ConfigType {
     DBUrl,

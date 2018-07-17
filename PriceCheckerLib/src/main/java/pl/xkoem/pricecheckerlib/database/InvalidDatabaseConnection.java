@@ -1,4 +1,4 @@
-package pl.xkoem.priceengine.database;
+package pl.xkoem.pricecheckerlib.database;
 
 public class InvalidDatabaseConnection extends Throwable {
 

@@ -1,14 +1,14 @@
 package pl.xkoem.priceengine;
 
-import pl.xkoem.priceengine.config.Config;
-import pl.xkoem.priceengine.database.DatabaseConnection;
-import pl.xkoem.priceengine.database.InvalidDatabaseConnection;
-import pl.xkoem.priceengine.database.Query;
-import pl.xkoem.priceengine.database.QueryTranslator;
-import pl.xkoem.priceengine.database.model.Product;
-import pl.xkoem.priceengine.database.model.Products;
+import pl.xkoem.pricecheckerlib.config.Config;
+import pl.xkoem.pricecheckerlib.database.DatabaseConnection;
+import pl.xkoem.pricecheckerlib.database.InvalidDatabaseConnection;
+import pl.xkoem.pricecheckerlib.database.Query;
+import pl.xkoem.pricecheckerlib.database.QueryTranslator;
+import pl.xkoem.pricecheckerlib.model.Product;
+import pl.xkoem.pricecheckerlib.model.Products;
 import pl.xkoem.priceengine.page.NotValidPageException;
-import pl.xkoem.priceengine.util.LoggerService;
+import pl.xkoem.pricecheckerlib.util.LoggerService;
 
 import java.util.List;
 

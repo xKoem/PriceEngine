@@ -1,6 +1,6 @@
-package pl.xkoem.priceengine.file;
+package pl.xkoem.pricecheckerlib.file;
 
-import pl.xkoem.priceengine.util.LoggerService;
+import pl.xkoem.pricecheckerlib.util.LoggerService;
 
 import java.io.BufferedReader;
 import java.io.File;

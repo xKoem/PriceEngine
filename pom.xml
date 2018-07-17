@@ -29,6 +29,7 @@
 
 
     <modules>
+        <module>PriceCheckerLib</module>
         <module>Client</module>
         <module>PriceEngine</module>
     </modules>
@@ -53,6 +54,7 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <modules>
+                <module>PriceCheckerLib</module>
                 <module>Client</module>
                 <module>PriceEngine</module>
             </modules>

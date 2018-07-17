@@ -1,12 +1,12 @@
 package pl.xkoem.priceengine;
 
-import pl.xkoem.priceengine.database.model.Product;
-import pl.xkoem.priceengine.database.model.Products;
+import pl.xkoem.pricecheckerlib.model.Product;
+import pl.xkoem.pricecheckerlib.model.Products;
 import pl.xkoem.priceengine.page.pages.EmptyPage;
 import pl.xkoem.priceengine.page.PageCreator;
 import pl.xkoem.priceengine.page.NotValidPageException;
 import pl.xkoem.priceengine.page.pages.Page;
-import pl.xkoem.priceengine.util.LoggerService;
+import pl.xkoem.pricecheckerlib.util.LoggerService;
 
 
 class URLChecker {
@@ -32,14 +32,12 @@ class URLChecker {
 
         logger.logInfo(this.getClass(), "Products to check: " + productsToCheck.size() + " Checked: " + checked);
 
-
         return productsToCheck;
     }
 
     String checkName(String link) throws NotValidPageException {
         Page p = PageCreator.getPage(link);
         return p.getProductName();
-
     }
 
 }

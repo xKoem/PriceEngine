@@ -1,11 +1,7 @@
-package pl.xkoem.priceengine.util;
+package pl.xkoem.pricecheckerlib.util;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class LoggerService {
     private static final Logger logger = LoggerFactory.getLogger("PriceEngine");

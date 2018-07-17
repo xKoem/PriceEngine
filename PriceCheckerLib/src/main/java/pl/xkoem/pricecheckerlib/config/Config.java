@@ -1,6 +1,6 @@
-package pl.xkoem.priceengine.config;
+package pl.xkoem.pricecheckerlib.config;
 
-import pl.xkoem.priceengine.util.Pair;
+import pl.xkoem.pricecheckerlib.util.Pair;
 
 import java.util.List;
 

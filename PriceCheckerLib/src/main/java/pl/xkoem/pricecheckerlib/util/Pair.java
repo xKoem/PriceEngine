@@ -1,4 +1,4 @@
-package pl.xkoem.priceengine.util;
+package pl.xkoem.pricecheckerlib.util;
 
 public class Pair<T> {
 
