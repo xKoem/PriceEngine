@@ -11,17 +11,11 @@ public class LoggerService {
     private static final Logger logger = LoggerFactory.getLogger("PriceEngine");
 
     public void logError(Class loggingClass, String message) {
-        logger.error(getDateTime() + " [" + loggingClass.getSimpleName() + "] " + message);
+        logger.error(" [" + loggingClass.getSimpleName() + "] " + message);
     }
 
     public void logInfo(Class loggingClass, String message) {
 
-        logger.info(getDateTime() + " [" + loggingClass.getSimpleName() + "] " + message);
-    }
-
-    private String getDateTime() {
-        DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
-        Date date = new Date();
-        return dateFormat.format(date);
+        logger.info(" [" + loggingClass.getSimpleName() + "] " + message);
     }
 }

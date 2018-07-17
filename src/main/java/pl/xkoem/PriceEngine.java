@@ -7,6 +7,7 @@ import pl.xkoem.database.Query;
 import pl.xkoem.database.QueryTranslator;
 import pl.xkoem.database.model.Product;
 import pl.xkoem.database.model.Products;
+import pl.xkoem.page.NotValidPageException;
 import pl.xkoem.util.LoggerService;
 
 import java.util.List;
@@ -14,6 +15,8 @@ import java.util.List;
 class PriceEngine {
     private Query query;
     private long checkingTime;
+    private int insertedProducts;
+
     private static final LoggerService logger = new LoggerService();
 
     PriceEngine(Config config) {
@@ -36,26 +39,33 @@ class PriceEngine {
     }
 
     private void insertPrices(Products checkedProducts) {
+        insertedProducts = 0;
         checkedProducts.getProducts().stream()
                 .filter(product -> !product.getPrice().equals(""))
+                .filter(Product::isPriceChanged)
                 .forEach(this::insertPrice);
+        logger.logInfo(this.getClass(), "Updated prices for " + insertedProducts + " products");
     }
 
     private void insertPrice(Product product) {
         int productID = product.getProductID();
         String productPrice = product.getPrice();
         query.insertPrice(productID, productPrice, checkingTime);
+        insertedProducts++;
     }
 
     void insertNewProducts(List<String> links) {
         URLChecker urlChecker = new URLChecker();
         for (String link: links) {
-            String name = urlChecker.checkName(link);
-            if (name.isEmpty()) {
-                logger.logError(this.getClass(), "Cannot find name for url: " + link);
-                continue;
+            String name = null;
+            try {
+                name = urlChecker.checkName(link);
+                query.insertNewProduct(name, link);
+            } catch (NotValidPageException e) {
+                logger.logError(this.getClass(), "Not valid page: " + e.getMessage());
             }
-            query.insertNewProduct(name, link);
+
+
         }
     }
 }

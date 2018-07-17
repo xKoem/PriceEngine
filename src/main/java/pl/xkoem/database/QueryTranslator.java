@@ -14,8 +14,9 @@ public class QueryTranslator {
             while (resultSet.next()) {
                 int productID = resultSet.getInt("product_id");
                 String link = resultSet.getString("link");
+                String price = resultSet.getString("price");
 
-                Product product = new Product(productID, link);
+                Product product = new Product(productID, link, price);
                 products.addProduct(product);
             }
         } catch (SQLException e) {

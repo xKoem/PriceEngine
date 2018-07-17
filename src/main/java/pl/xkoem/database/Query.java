@@ -62,7 +62,16 @@ public class Query {
     }
 
     public ResultSet queryProductsForChecking() {
-        return query("select * from products where is_checking=true");
+        return query("select prod.product_id, prod.link, pric.price from products prod " +
+                "left join prices pric on pric.product_id = prod.product_id " +
+                "where prod.is_checking = true " +
+                "and ( " +
+                "pric.checking_time = ( " +
+                "select max(p.checking_time) from prices p " +
+                "where p.product_id = prod.product_id " +
+                ") " +
+                "or pric.checking_time is null " +
+                "); ");
     }
 
     private ResultSet query(String query) {
