@@ -1,5 +1,7 @@
 package pl.xkoem.priceengineclient.models;
 
+import java.util.List;
+
 public class ProductHistory {
     private int id;
     private String name;
@@ -9,6 +11,10 @@ public class ProductHistory {
         this.id = id;
         this.name = name;
         this.prices = new Prices();
+    }
+
+    public Prices getPrices() {
+        return prices;
     }
 
     public void addPrice(Price price) {
@@ -22,5 +28,9 @@ public class ProductHistory {
                 ", name='" + name + '\'' +
                 ", prices=" + prices +
                 '}';
+    }
+
+    public String getProductName() {
+        return name;
     }
 }

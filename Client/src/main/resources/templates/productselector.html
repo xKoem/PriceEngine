@@ -8,8 +8,11 @@
 <body>
 <h1>Select Product</h1>
 <form action="#" th:action="@{/productselector}" th:object="${product}" method="post">
-    <p>Name: <input type="text" th:field="*{id}" /></p>
+    <select th:field="*{id}">
+        <option th:each="pr: ${products.getFrontProducts()}" th:value="${pr.getId()}" th:text="${pr.getName()}"></option>
+    </select>
     <p><input type="submit" value="Submit" /></p>
 </form>
+
 </body>
 </html>

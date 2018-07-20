@@ -21,4 +21,16 @@ public class Prices {
                 "priceList=" + priceList +
                 '}';
     }
+
+    public List<Price> getPrices() {
+        return priceList;
+    }
+
+    public Price getPrice(int i) {
+        return priceList.get(i);
+    }
+
+    public int size() {
+        return priceList.size();
+    }
 }

@@ -4,8 +4,9 @@ import pl.xkoem.pricecheckerlib.config.Config;
 import pl.xkoem.pricecheckerlib.database.DatabaseConnection;
 import pl.xkoem.pricecheckerlib.database.InvalidDatabaseConnection;
 import pl.xkoem.pricecheckerlib.database.Query;
+import pl.xkoem.pricecheckerlib.database.QueryTranslator;
 import pl.xkoem.pricecheckerlib.file.FileReader;
-import pl.xkoem.pricecheckerlib.model.Products;
+import pl.xkoem.pricecheckerlib.model.FrontProducts;
 import pl.xkoem.pricecheckerlib.util.LoggerService;
 
 import java.sql.ResultSet;
@@ -29,10 +30,9 @@ public class DatabaseFrontConnector {
         }
     }
 
-    public Products getProducts() {
-        Products products = new Products();
-        //todo: list of available products
-        return products;
+    public FrontProducts getProducts() {
+        ResultSet resultSet = query.queryAllProducts();
+        return QueryTranslator.translateResultSetToFrontProducts(resultSet);
     }
 
     public ProductHistory getProductHistory(String productID) throws SQLException {

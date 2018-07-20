@@ -85,6 +85,10 @@ public class Query {
                 "); ");
     }
 
+    public ResultSet queryAllProducts() {
+        return query("select * from products;");
+    }
+
     private ResultSet query(String query) {
         if (!databaseConnection.isConnectionEstablished()) {
             return null;
